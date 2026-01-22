@@ -212,6 +212,16 @@ else ifeq ($(platform), psp1)
 	STATIC_LINKING = 1
 	FLAGS += -G0
 
+# DOS
+else ifeq ($(platform), dos)
+	EXT=a
+	TARGET := $(TARGET_NAME)_libretro_$(platform).$(EXT)
+	CC = i686-pc-msdosdjgpp-gcc
+	AR = i686-pc-msdosdjgpp-ar
+	STATIC_LINKING=1
+	STATIC_LINKING_LINK=1
+	CFLAGS += -march=i386
+
 # Vita
 else ifeq ($(platform), vita)
 	TARGET := $(TARGET_NAME)_libretro_$(platform).a
